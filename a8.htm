@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0063)http://ginger.cs.uwp.edu/Classes/Cs242/Assignments/assign8.html -->
+<HTML><HEAD><TITLE>CSCI 242 Assignments: Assignment 8</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2627" name=GENERATOR></HEAD>
+<BODY link=#026322 bgColor=white>
+<CENTER>
+<HR>
+
+<H2>CSCI 242 Assignment 8: Morse Code</TT> </H2>
+<HR>
+</CENTER>
+<H3>Due: <B>Friday, May 13 <I>by 5 p.m.</I></B><BR></H3>
+<P>
+<H3>Description </H3>In 1838, Samuel Morse devised a signaling code for use with 
+his electromagnetic telegraph machine. The code used two different signaling 
+elements: the "dot", a short duration electric current, and the "dash", a longer 
+duration signal. The signals lowered an ink pen mounted on a special arm, which 
+left dots and dashes on the strip of paper moving beneath the arm. Morse's code 
+gained wide acceptance and, in its international form, is still in use. (Samuel 
+Morse also achieved some distinction as an artist, particularly as a painter of 
+miniatures, and between 1826 and 1845 served as the first president of the 
+National Academy of Design.) 
+<P>In 1858, Queen Victoria sent the first tranatlantic telegram message of 
+ninety-eight words to congratulate the newly-elected President James Buchanon of 
+the U.S. This not-so-instant message took 16.5 hours to transmit via the brand 
+new transatlantic telegraph cable. 
+<P>In this project, we'll simulate a telegraph station that encodes messages 
+from text into Morse code and decodes the Morse code back to plain text. You'll 
+use two data structures in this project: a Java <TT>TreeMap</TT> object and your 
+own binary tree. The <I>encoding</I> (changing our text into Morse code) will be 
+accomplished simply by looking up a symbol in a <TT>TreeMap</TT> that associates 
+each symbol with its Morse code string. The <I>decoding</I> (changing Morse code 
+into text we can read) will be implemented with the help of your binary tree. 
+Remember that Morse code for each character represents a path from the root of 
+the tree to some node; a "dot" means to go left, and a "dash" means to go right. 
+The node at the end of the path contains the symbol corresponding to the code. 
+<P>You should start by downloading two files associated with this project: 
+<TT>Telegraph.java</TT> and <TT>MorseCode.java</TT>, which you will complete. 
+(These classes are available on our course assignments web page.) The 
+"Telegraph" is implemented in these two classes. In addition, <TT>MorseCode</TT> 
+uses the <TT>BinaryNode</TT> class from your textbook. The <TT>Telegraph</TT> 
+class opens two windows on the screen, "London" and "New York", and handles the 
+text entry fields and GUI events in them. The <TT>Telegraph</TT> class is 
+complete. The <TT>MorseCode</TT> class implements encoding and decoding of text. 
+All the methods in this class are <B>static</B>. The <TT>start()</TT> method 
+initializes the encoding map and the decoding tree; the private method named 
+<TT>treeInsert()</TT> inserts a given symbol into the decoding tree, according 
+to its Morse code string; the public <TT>encode()</TT> and <TT>decode()</TT> 
+methods convert plain text into Morse code and back, respectively. 
+<P>Your task is to supply all the missing code in the MorseCode class. (You will 
+need add/implement classes related to binary tree as well.) Begin by examining 
+the documentation for the <TT>TreeMap</TT> class, found in the 
+<TT>java.util</TT> package. You will need to use its methods to complete the 
+<TT>addSymbol()</TT> and <TT>encode()</TT> methods. In <TT>encode()</TT>, please 
+begin by converting the typed text into all uppercase characters. 
+<P>Your textbook implements a binary tree class, but many programmers simplify 
+the structure using only a binary node which holds the root of the tree. It is 
+easy to traverse the tree in any manner once you have the root node. This is the 
+approach I'd like you to take in your program. You'll see a static variable 
+already declared named <TT>decodeTree</TT> which holds the root (binary node) of 
+the tree. When these instructions refer to a "binary tree", it means the tree 
+structure that branches off from that root node. 
+<P>In the <TT>start()</TT> method, the binary tree named <TT>decodeTree</TT> has 
+been constructed and initialized to hold the blank (space) character in the 
+root. You'll need to add code to insert nodes in this tree for each character 
+you wish to decode. Most of the work will be done in the <TT>treeInsert()</TT> 
+method. 
+<P>For the <TT>decode()</TT> method, you'll need to use your binary tree to look 
+up the corresponding characters. 
+<P>There is also a <TT>printTree()</TT> method in the <TT>MorseCode</TT> class. 
+Use this method to help you debug your tree (if you need it). You can use any 
+type of traversal method you wish to step through the nodes of your tree and 
+print its contents to standard output. Print whatever you feel is helpful to 
+you: node contents, the path you took to get there, and/or anything else that 
+comes to mind. 
+<P>Go ahead and add any helper methods if you think of some that might be 
+useful. If characters not already listed in the <TT>start()</TT> method are 
+typed into the text box when the program runs, your program should not try to 
+encode them. 
+<P>The code for the binary node class is not contained in one place in your 
+textbook; you will need to "gather up the pieces" to put it together. Here is a 
+chart to help you: 
+<P>
+<TABLE cellPadding=3 border=3>
+  <TBODY>
+  <TR>
+    <TH font="+1">
+  <TR>
+    <TD>Textbook Code Segment</TD>
+    <TD>File Name</TD>
+    <TD>Notes</TD></TR></TH></B></FONT>
+  <TR>
+    <TD>25.02</TD>
+    <TD><TT>BinaryNodeInterface</TT></TD>
+    <TD>download to your project directory and compile it</TD>
+  <TR>
+    <TD>25.03</TD>
+    <TD><TT>BinaryNode</TT></TD>
+    <TD>
+      <OL>
+        <LI>remove package statement 
+        <LI>make class public 
+        <LI>finish implementation 
+        <LI>add <TT>copy()</TT> code from 25.6a 
+        <LI>add counting methods from 25.11 </LI></OL></TD></TR></TBODY></TABLE>
+<P>Make sure that everything you add or modify contains descriptive comments. 
+The rest of the implementation is up to you. By the end of CSCI-242, I trust you 
+know enough to make your own decisions. But if you do have questions, please see 
+me WELL BEFORE the deadline! 
+<H3>Submission Requirements </H3>
+<OL>
+  <LI>Print <I>all</I> <TT>.java</TT> files that you have changed or added 
+  (<TT>BinaryNode.java</TT>, <TT>MorseCode.java</TT>). Print a hard (paper) copy 
+  of each file for submission. Be sure to use the <TT>lpr -Poneup</TT> command 
+  if printing in our lab. 
+  <P></P>
+  <LI>You must also submit these files electronically. Perform the 
+  <TT>submit</TT> command <I>from</I> the directory in which your files reside. 
+  <I>Note: if you have placed your files in the same directory, you can perform 
+  this command from the directory to submit all:</I> <PRE>        submit 242 *.java     </PRE>I will ignore any files not submitted 
+  on paper. If you discover after submission that you want to change your 
+  program and then resubmit, simply type the same <TT>submit</TT> command as 
+  before. The new program(s) will then replace the old. 
+  <P></P>
+  <LI>If you wish to double-check that your submissions succeeded, enter this 
+  command (replacing the <TT>xxxx</TT> with your own login name): <PRE>     more /home/student/Submit/Cs242/xxxx/Filename.java     </PRE>This 
+  displays the copy of your program stored in the has-been-submitted location. 
+  (You need to do it separately for each file.) </LI></OL>
+<H3>Grading Criteria </H3>
+<BLOCKQUOTE>
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TD><EM>Your programs must compile ERROR FREE to receive any 
+        credit!</EM> 
+    <TR>
+      <TD>Comments/Style/Organization </TD>
+      <TD>15 pts </TD></TR>
+    <TR>
+      <TD>Correctness (including following instructions) </TD>
+      <TD>35 pts </TD></TR>
+    <TR>
+      <TD>Total </TD>
+      <TD>50 pts </TD></TR></TBODY></TABLE></BLOCKQUOTE></BODY></HTML>
